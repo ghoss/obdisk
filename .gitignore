@@ -1,0 +1,16 @@
+*.log
+*.cache
+*.scan
+*.status
+.deps
+*~
+*.o
+*.gz
+missing
+stamp-*
+Makefile
+config.h
+
+# Build-specific files/dirs
+test
+obdisk
