@@ -3,6 +3,8 @@
 *.scan
 *.status
 .deps
+.dirstamp
+bin
 *~
 *.o
 *.gz

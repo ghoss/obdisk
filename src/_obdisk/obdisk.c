@@ -24,10 +24,11 @@ void main(int argc, char **argv)
 	char *filearg = NULL;
 	mode_type mode = M_UNKNOWN;
 	bool verbose = false;
+	bool brute = false;
 
 	// Parse command line options
 	opterr = 0;
-	while ((c = getopt (argc, argv, "Vvlxhd:")) != -1)
+	while ((c = getopt (argc, argv, "Vvlxhfd:")) != -1)
 	{
 		switch (c)
 		{
@@ -45,6 +46,10 @@ void main(int argc, char **argv)
 
 		case 'v' :
 			verbose = true;
+			break;
+
+		case 'f' :
+			brute = true;
 			break;
 
 		case 'h' :
@@ -94,13 +99,15 @@ void main(int argc, char **argv)
 	if (verbose)
 	{
 		printf("> File argument: '%s'\n", filearg ? filearg : "*");
+		if (brute)
+			printf("> Brute force mode enabled\n");
 	}
 
 	// Execute requested program function
 	switch (mode)
 	{
 	case M_LISTDIR :
-		ob_listdir(imgfile_fd, filearg, verbose);
+		ob_listdir(imgfile_fd, filearg, brute, verbose);
 		break;
 
 	case M_EXTRACT :
@@ -113,7 +120,8 @@ void main(int argc, char **argv)
 		}
 		if (verbose)
 			printf("> Destination dir: '%s'\n", outdir ? outdir : ".");
-		ob_extract(imgfile_fd, filearg, outdir, verbose);
+
+		ob_extract(imgfile_fd, filearg, outdir, brute, verbose);
 		break;
 
 	default :

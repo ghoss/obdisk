@@ -3,7 +3,7 @@
 
 AC_PREREQ([2.71])
 AC_INIT([obdisk], [0.1], [])
-AM_INIT_AUTOMAKE([-Werror foreign])
+AM_INIT_AUTOMAKE([-Werror foreign subdir-objects])
 AC_CONFIG_HEADERS([config.h])
 
 # Checks for programs.
@@ -17,6 +17,10 @@ AC_PROG_CC
 
 # Checks for library functions.
 
-AC_CONFIG_FILES([Makefile
-                 src/Makefile])
+AC_CONFIG_FILES([
+	src/_obdisk/Makefile
+	src/_obtext/Makefile
+	Makefile
+])
+
 AC_OUTPUT

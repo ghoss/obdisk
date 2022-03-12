@@ -25,7 +25,7 @@ The archive contains three files. The **ceres_xt2190.dat** file is the actual du
 List and extract files on a Ceres harddisk dump.
 
 ```
-USAGE: obdisk [-l|-x|-h|-v|-V] image_file [file_arg]
+USAGE: obdisk [-lxhfvV] [-d dest_dir] image_file [file_arg]
 
 -l	List directory of image_file
 	If file_arg is omitted: list all entries
@@ -34,6 +34,8 @@ USAGE: obdisk [-l|-x|-h|-v|-V] image_file [file_arg]
 -x	Extract files on image_file
 
 -d	Extract into destination dir 'dest_dir' (must already exist)
+
+-f	Brute force mode (ignores disk structure; use with caution)
 
 -v	Verbose output
 
@@ -48,20 +50,38 @@ original Oberon Ceres machine.
 
 * ```obdisk -l ceres.dat```
 
-  Lists all files in the disk image **ceres.dat**
+  List all files in the disk image **ceres.dat**
+
 * ```obdisk -l ceres.dat '*.Text'```
 
-  Lists all files matching the specified wild card pattern `*.Text`.<br> 
+  List all files matching the specified wild card pattern `*.Text`.<br> 
   *(note the single quotes to avoid shell expansion)*.
+
+* ```obdisk -lf ceres.dat````
+
+  List all files in the disk image **ceres.dat** using brute force mode.
   
 * ```obdisk -xv ceres.dat```
-* 
+ 
   Extract *all* files in the disk image into the *current directory* and display progress.
+
+* ```obdisk -xvf ceres.dat````
+
+  Same as above, but extract in brute force mode. Duplicate files are only exported once
+  (i.e. the last instance found overwrites previous ones with the same name).
   
 * ```obdisk -x -d ../path/filedir ceres.dat 'Write.*'```
 
   Extract all files matching the wildcard search pattern `Write.*` into the destination directory `../path/filedir`.<br>
   *(note: the specified directory must already exist)*.
+
+#### Notes On "Brute Force" Mode
+
+In "normal" mode (i.e. without the `-f` option), **obdisk** expects to find an intact directory structure and will take the files to be listed/extracted from there.
+
+If normal mode produces unexpected results (e.g. no files found, or error messages about missing file headers), running with the `-f` option will scan the entire disk image for sectors which look like directory entries, and will try to find files there.
+
+Please be aware that the files found by brute force may have been corrupted/truncated/deleted etc. on the original Ceres disk. It is recommended to check and validate the extracted files manually.
   
 ## References
 Portions of this code have been derived from the official [Project Oberon](https://github.com/Project-Oberon/Source-Code/tree/main/CERES%20Oberon%20V4) source code and documentation, in particular from the logical filesystem implementation in the `FileDir` and `Files` modules.

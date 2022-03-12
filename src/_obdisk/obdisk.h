@@ -71,14 +71,20 @@ typedef struct {
 // Function declarations
 void ob_version();
 void ob_usage();
-void ob_listdir(FILE *fd, char *filearg, bool verbose);
-void ob_extract(FILE *fd, char *filearg, char *outdir, bool verbose);
-void ob_get_fileheader(FILE *fd, diskadr_t n, fileheader_t *hdr);
+void ob_listdir(FILE *fd, char *filearg, bool brute, bool verbose);
+void ob_extract(
+	FILE *fd, char *filearg, char *outdir,
+	bool brute, bool verbose
+);
+bool ob_get_fileheader(FILE *fd, diskadr_t n, fileheader_t *hdr);
 uint32_t ob_get_filesize(fileheader_t *hdr);
-void ob_get_sector(FILE *fd, diskadr_t n, sector_t *p);
+bool ob_get_sector(FILE *fd, diskadr_t n, sector_t *p);
 void ob_traverse(
 	FILE *fd, diskadr_t n, char *filearg,
 	void (*callproc)(direntry_t *)
+);
+void ob_traverse_brute(
+	FILE *fd, char *filearg, void (*callproc)(direntry_t *)
 );
 
 #endif

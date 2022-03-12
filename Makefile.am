@@ -1,1 +1,3 @@
-SUBDIRS = src
+SUBDIRS = \
+	src/_obdisk \
+	src/_obtext
