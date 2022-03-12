@@ -65,7 +65,7 @@ original Oberon Ceres machine.
  
   Extract *all* files in the disk image into the *current directory* and display progress.
 
-* ```obdisk -xvf ceres.dat````
+* ```obdisk -xvf ceres.dat```
 
   Same as above, but extract in brute force mode. Duplicate files are only exported once
   (i.e. the last instance found overwrites previous ones with the same name).
