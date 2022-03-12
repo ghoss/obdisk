@@ -1,6 +1,14 @@
+//=====================================================
+// obdisk
+// Oberon Ceres Disk Utility
+//
+// Guido Hoss, 12.03.2022
+//
+// Published by Guido Hoss under GNU Public License V3.
+//=====================================================
+
 #include <stdio.h>
 #include <config.h>
-
 #include "obdisk.h"
 
 

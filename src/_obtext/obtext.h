@@ -1,3 +1,12 @@
+//=====================================================
+// obtext
+// Oberon Ceres Text File Conversion
+//
+// Guido Hoss, 12.03.2022
+//
+// Published by Guido Hoss under GNU Public License V3.
+//=====================================================
+
 #ifndef _OBTEXT_H
 #define _OBTEXT_H   1
 

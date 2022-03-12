@@ -1,5 +1,13 @@
-#include "obdisk.h"
+//=====================================================
+// obdisk
+// Oberon Ceres Disk Utility
+//
+// Guido Hoss, 12.03.2022
+//
+// Published by Guido Hoss under GNU Public License V3.
+//=====================================================
 
+#include "obdisk.h"
 
 // ob_listdir
 // List filesystem directory with optional wildcard filter
