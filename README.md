@@ -6,7 +6,7 @@ Currently, one tool is implemented: **obdisk** for listing and extracting files.
 I plan to implement a further tool to convert text files from the proprietary Ceres rich text format to standard ASCII.
 
 ## Compiling And Installation
-1. Download the .tar.gz packages from the "[Releases](https://github.com/good-sushi/obdisk/releases)" page.
+1. Download the .tar.gz packages from the "[Releases](https://github.com/ghoss/obdisk/releases)" page.
 2. Extract and build:
     ```
     $ tar xzf obdisk-x.y.tar.gz
