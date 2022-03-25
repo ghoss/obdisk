@@ -14,14 +14,17 @@
 
 void ob_version()
 {
-    fprintf(stderr, PKG " v" PACKAGE_VERSION " (" VERSION_BUILD_DATE ")\n");
+    fprintf(stderr, 
+		PACKAGE " by " PACKAGE_BUGREPORT" (" VERSION_BUILD_DATE ")\n"
+		"Oberon Ceres Disk Utility\n\n"
+	);
 }
 
 
 void ob_usage()
 {
     fprintf(stderr,
-        "USAGE: " PKG " [-lxhfvV] [-d dest_dir] image_file [file_arg]\n\n"
+        "USAGE: " PACKAGE " [-lxhfvV] [-d dest_dir] image_file [file_arg]\n\n"
         "-l\tList directory of image_file\n"
         "\tIf file_arg is omitted: list all entries\n"
         "\totherwise, list files matching regex in file_arg\n\n"
